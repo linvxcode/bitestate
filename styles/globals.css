@@ -17,13 +17,18 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: #EEEEEE;
+  background: #0F0E0E;
+}
+
+.glowbg {
+  border-radius: 32px;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    170deg,
+    rgb(9 58 236 / 20%) 38.95%,
+    rgb(54 9 236 / 20%) 92.27%
+  );
+  filter: blur(95px);
 }
 
 @layer utilities {
