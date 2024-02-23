@@ -1,18 +1,23 @@
 "use client";
+import Image from "@/common/component/element/Image";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { FaEthereum } from "react-icons/fa6";
 import { GrFormClose } from "react-icons/gr";
-import { TbRulerOff } from "react-icons/tb";
 
 interface ModalProps {
-  openModal: any;
-  setOpenModal: any;
+  openModal: boolean;
+  setOpenModal: (value: boolean) => void;
+  selectedItem: any;
 }
 
-export default function Modal({ openModal, setOpenModal }: ModalProps) {
+export default function Modal({
+  openModal,
+  setOpenModal,
+  selectedItem,
+}: ModalProps) {
   const [choice, setChoice] = useState<boolean>(false);
+
   return (
     <motion.div
       className="w-[50%] xl:w-[30%] mx-auto rounded-3xl flex  inset-44  h-[400px]  bg-neutral-900 fixed z-[999]"
@@ -53,13 +58,23 @@ export default function Modal({ openModal, setOpenModal }: ModalProps) {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center px-10 py-2">
+        <div className="w-full flex justify-center items-center px-10 py-5">
           <div className="flex w-full justify-between items-center">
             <div className="flex items-center gap-1">
-              <FaEthereum size={20} />
-              <h1 className="text-lg font-semibold">ETHEREUM</h1>
+              {selectedItem?.iconCrypto1 && (
+                <Image
+                  className="w-full h-auto"
+                  src={selectedItem?.iconCrypto1}
+                  alt="Coin Bit Estate"
+                  width={20}
+                  height={20}
+                />
+              )}
+              <h1 className="text-lg font-semibold">
+                {selectedItem?.titleCrypto1}
+              </h1>
             </div>
-            <div>Balance: 0</div>
+            <div>Balance: $ {selectedItem?.balance}</div>
           </div>
         </div>
 
@@ -83,14 +98,27 @@ export default function Modal({ openModal, setOpenModal }: ModalProps) {
         </div>
 
         <div className="w-full flex justify-center items-center px-10 py-10">
-          <motion.button
-            className="px-5 py-2 bg-[#01a2e9] rounded-2xl w-full"
-            whileTap={{
-              scale: 0.9,
-            }}
-          >
-            <h1 className="text-black font-semibold">Connect Wallet</h1>
-          </motion.button>
+          {/* Stake & Withdraw Button Logic */}
+
+          {choice === false ? (
+            <motion.button
+              className="px-5 py-2 bg-[#01a2e9] rounded-2xl w-full"
+              whileTap={{
+                scale: 0.9,
+              }}
+            >
+              <h1 className="text-black font-semibold">Stake</h1>
+            </motion.button>
+          ) : (
+            <motion.button
+              className="px-5 py-2 bg-[#01a2e9] rounded-2xl w-full"
+              whileTap={{
+                scale: 0.9,
+              }}
+            >
+              <h1 className="text-black font-semibold">Withdraw</h1>
+            </motion.button>
+          )}
         </div>
       </div>
     </motion.div>

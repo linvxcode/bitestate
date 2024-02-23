@@ -10,13 +10,20 @@ import { GoPlus } from "react-icons/go";
 import { GrFormSubtract } from "react-icons/gr";
 import Modal from "./Modal";
 import { StakingItem } from "@/common/constant/StakingItem";
+import Image from "@/common/component/element/Image";
 
 export default function Card() {
   const [open, setOpen] = useState<number | null>(null);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
-  const handleOpen = (index: any) => {
+  const handleOpen = (index: number) => {
     setOpen(open === index ? null : index)
+  }
+
+  const handleOpenModal = (index: number) => {
+    setOpenModal(true);
+    setSelectedItem(index);
   }
 
   return (
@@ -24,19 +31,31 @@ export default function Card() {
       {StakingItem?.map((item, index) => (
         <motion.div
           key={index}
-          className="w-full relative top-0 bg-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center "
+          className="w-full overflow-hidden relative top-0 bg-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center "
           animate={{
             height: open === index ? 300 : 90,
           }}
         >
-          <div className="w-full flex gap-10">
+          <motion.div className="absolute inset-0 glowbg z-0 rounded-3xl"
+          animate={{
+            height: open === index ? 400 : 0
+          }}
+
+          ></motion.div>
+          <div className="w-full flex gap-10 relative">
             <div
               className={`flex items-center gap-10 w-[37.5%] hover:cursor-pointer`}
               onClick={() => handleOpen(index)}
             >
               <div className="flex items-center">
+                <Image 
+                className="w-full h-auto"
+                src={item.iconCrypto1}
+                alt="Coin Bit Estate"
+                width={40}
+                height={40}
+                />
                 <FaEthereum size={40} />
-                <CiBitcoin size={40} className="relative " />
               </div>
               <div className="flex items-center">
                 <h1 className="text-xl font-semibold">
@@ -69,7 +88,7 @@ export default function Card() {
           <div
             className={clsx(
               open === index ? "block" : "hidden",
-              `w-full flex flex-col gap-5 items-start`
+              `w-full flex flex-col gap-5 items-start relative`
             )}
           >
             <div className="w-full grid grid-cols-3 items-center">
@@ -111,10 +130,10 @@ export default function Card() {
               </div>
             </div>
           </div>
-          <div className={clsx(open === index ? "block" : "hidden", `w-full`)}>
+          <div className={clsx(open === index ? "block" : "hidden", `w-full relative`)}>
             <div className="w-full flex gap-5">
               <ButtonIcon
-                onClick={() => setOpenModal(!openModal)}
+                onClick={() => handleOpenModal(index)}
                 icon={<GoPlus size={20} />}
                 title="Add Liquidity"
               />
@@ -125,7 +144,11 @@ export default function Card() {
       ))}
 
       <div className="">
-        <Modal openModal={openModal} setOpenModal={setOpenModal} />
+        <Modal 
+        openModal={openModal} 
+        setOpenModal={setOpenModal} 
+        selectedItem={selectedItem !== null ? StakingItem[selectedItem] : null}
+        />
       </div>
     </div>
   );

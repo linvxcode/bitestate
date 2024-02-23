@@ -14,7 +14,7 @@ import { IoWalletOutline } from "react-icons/io5";
 const Navbar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState<boolean>(false);
-  const [scroll, setScrolled] = useState(false);
+  const [scroll, setScrolled] = useState<boolean>(false);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <motion.div
       className={clsx(
-        scroll ? "backdrop-blur-sm border-b-[1px] border-neutral-800" : "",
+        // scroll ? "backdrop-blur-sm border-b-[1px] border-neutral-800" : "",
         `w-full transition-all duration-300 mx-auto bg-[#0f0e0e]  max-w-[1500px]   py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
       )}
     >
