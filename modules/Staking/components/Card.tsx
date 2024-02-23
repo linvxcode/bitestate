@@ -10,6 +10,7 @@ import { GrFormSubtract } from "react-icons/gr";
 import Modal from "./Modal";
 import { StakingItem } from "@/common/constant/StakingItem";
 import Image from "@/common/component/element/Image";
+import ComponentTransition from "@/common/component/element/ComponentTransition";
 
 export default function Card() {
   const [open, setOpen] = useState<number | null>(null);
@@ -26,7 +27,7 @@ export default function Card() {
   };
 
   return (
-    <div className="w-full flex flex-col max-lg:overflow-scroll  gap-5 justify-start  items-start">
+    <ComponentTransition className="w-full flex flex-col max-lg:overflow-scroll  gap-5 justify-start  items-start">
       {StakingItem?.map((item, index) => (
         <motion.div
           key={index}
@@ -36,9 +37,9 @@ export default function Card() {
           }}
         >
           <motion.div
-            className="absolute inset-0 glowbg z-0 rounded-3xl"
+            className="absolute inset-0 glowcard z-0 rounded-3xl"
             animate={{
-              height: open === index ? 400 : 0,
+              height: open === index ? 400 : 90,
             }}
           ></motion.div>
           <div className="w-full flex gap-10 relative">
@@ -139,7 +140,7 @@ export default function Card() {
               <ButtonIcon
                 onClick={() => handleOpenModal(index)}
                 icon={<GoPlus size={20} />}
-                title="Add Liquidity"
+                title="Stake"
               />
               <ButtonIcon icon={<GrFormSubtract size={20} />} />
             </div>
@@ -156,6 +157,6 @@ export default function Card() {
           }
         />
       </div>
-    </div>
+    </ComponentTransition>
   );
 }

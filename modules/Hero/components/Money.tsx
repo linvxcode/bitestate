@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Money() {
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center overflow-hidden">
       <motion.div 
       initial={{
         y:-180
