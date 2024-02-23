@@ -1,16 +1,16 @@
 import React from "react";
-import { motion, Variants } from "framer-motion";
-import { NavigationItem } from "../../constant/NavigationItem"; 
+import { motion } from "framer-motion";
+import { NavigationItem } from "../../constant/NavigationItem";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Links } from "./NavLink";
 
 interface NavigationMenuMobileProps {
-  open: boolean;
+  openNav: boolean;
   close: () => void;
 }
 
-const Anim: any = {
+const Anim = {
   open: () => ({
     height: "800px",
     zIndex: 99,
@@ -31,7 +31,7 @@ const Anim: any = {
   },
 };
 
-const Child: Variants = {
+const Child = {
   Isopen: {
     opacity: 1,
     height: "100%",
@@ -42,25 +42,28 @@ const Child: Variants = {
   },
 };
 
-const NavigationMenuMobile: React.FC<NavigationMenuMobileProps> = ({ open, close }) => {
+const NavigationMenuMobile = ({
+  openNav,
+  close,
+}: NavigationMenuMobileProps) => {
   const pathname = usePathname();
 
   return (
     <div>
       <motion.div
-        className="right-0 w-full lg:px-10 px-5 top-0 absolute flex h-screen bg-neutral-900"
+        className="right-0 w-full z-[9] lg:px-10 px-5 top-0 absolute flex h-screen bg-neutral-900"
         initial={false}
         variants={Anim}
-        animate={open ? "open" : "closed"}
+        animate={openNav ? "open" : "closed"}
       >
         <div className="mt-20 w-full">
-          <div className="gap-14 w-full lg:px-10 overflow-hidden">
+          <div className=" gap-14 w-full lg:px-10 overflow-hidden">
             {NavigationItem.map((item, index) => (
               <motion.div
                 key={index}
                 className="h-auto w-full"
                 initial={false}
-                animate={open ? "Isopen" : "closed"}
+                animate={openNav ? "Isopen" : "closed"}
                 variants={Child}
                 transition={{
                   type: "spring",
@@ -73,7 +76,6 @@ const NavigationMenuMobile: React.FC<NavigationMenuMobileProps> = ({ open, close
                     pathname={pathname}
                     heading={item.title}
                     href={item.src}
-                    // className="group hover:scale-105 w-full relative"
                   ></Links>
                 </Link>
               </motion.div>

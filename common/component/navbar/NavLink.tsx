@@ -1,3 +1,4 @@
+'use client'
 import clsx from "clsx";
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
@@ -10,7 +11,7 @@ interface LinksProps {
   pathname: string;
 }
 
-export const Links: React.FC<LinksProps> = ({ heading, href, pathname }) => {
+export const Links = ({ heading, href, pathname }: LinksProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);

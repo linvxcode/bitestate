@@ -7,7 +7,7 @@ export default function Money() {
     <div className="w-full flex flex-col justify-center items-center">
       <motion.div 
       initial={{
-        y:-80
+        y:-180
       }}
       animate={{
         y:0
@@ -180,7 +180,7 @@ export default function Money() {
 
     <motion.div
           initial={{
-            y:-80
+            y:-180
           }}
           animate={{
             y:0

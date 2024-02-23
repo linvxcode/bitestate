@@ -20,7 +20,7 @@ export default function Modal({
 
   return (
     <motion.div
-      className="w-[50%] xl:w-[30%] mx-auto rounded-3xl flex  inset-44  h-[400px]  bg-neutral-900 fixed z-[999]"
+      className="w-[80%] md:w-[60%] xl:w-[50%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[400px]  bg-neutral-900 fixed z-[999]"
       initial={{
         scale: 0,
       }}
@@ -59,7 +59,7 @@ export default function Modal({
         </div>
 
         <div className="w-full flex justify-center items-center px-10 py-5">
-          <div className="flex w-full justify-between items-center">
+          <div className="flex flex-row flex-wrap w-full justify-between items-center">
             <div className="flex items-center gap-1">
               {selectedItem?.iconCrypto1 && (
                 <Image

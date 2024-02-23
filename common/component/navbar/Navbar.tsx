@@ -9,43 +9,40 @@ import { usePathname } from "next/navigation";
 import ButtonConect from "../element/ButtonConect";
 import H1Hover from "../element/H1Hover";
 import Logo from "./Logo";
-import { IoWalletOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [open, setOpen] = useState<boolean>(false);
+  const [openNav, setOpenNav] = useState<boolean>(false);
   const [scroll, setScrolled] = useState<boolean>(false);
 
   const handleOpen = () => {
-    setOpen(!open);
+    setOpenNav(!openNav);
   };
 
   const close = () => {
-    setOpen(false);
+    setOpenNav(false);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrolled(window.scrollY > 10);
     });
   }, []);
 
-
-
   return (
     <motion.div
       className={clsx(
-        // scroll ? "backdrop-blur-sm border-b-[1px] border-neutral-800" : "",
-        `w-full transition-all duration-300 mx-auto bg-[#0f0e0e]  max-w-[1500px]   py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
+        scroll ? "backdrop-blur-sm border-b-[1px] border-[#353434]" : "",
+        `w-full transition-all duration-300 mx-auto bg-[#0f0e0ed3]  max-w-[1500px]   py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
       )}
     >
       <div className="flex flex-row justify-between items-center">
-        <div className="flex w-full z-[999] items-start justify-start">
+        <div className="flex w-full  items-start justify-start">
           <Link
             href="/"
             className="group relative w-auto flex justify-start items-center gap-2"
           >
-            <Logo  />
-
+            <Logo />
           </Link>
         </div>
         <div className="lg:flex hidden bg-neutral-800 py-3 rounded-2xl relative justify-center gap-10 items-center w-auto px-10">
@@ -61,7 +58,7 @@ const Navbar = () => {
         </div>
 
         <div className="lg:hidden flex  items-center">
-          <NavMobile open={open} handleOpen={handleOpen} close={close} />
+          <NavMobile openNav={openNav} handleOpen={handleOpen} close={close} />
         </div>
 
         <div className="lg:flex hidden  w-full items-end justify-end">
