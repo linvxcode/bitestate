@@ -9,6 +9,7 @@ import { GoPlus } from "react-icons/go";
 import { GrFormSubtract } from "react-icons/gr";
 import Modal from "./Modal";
 import { StakingItem } from "@/common/constant/StakingItem";
+import { HiEllipsisVertical } from "react-icons/hi2";
 import Image from "@/common/component/element/Image";
 import ComponentTransition from "@/common/component/element/ComponentTransition";
 
@@ -27,24 +28,21 @@ export default function Card() {
   };
 
   return (
-    <ComponentTransition className="w-full flex flex-col max-lg:overflow-scroll  gap-5 justify-start  items-start">
+    <ComponentTransition className="w-full flex flex-col   gap-5 justify-start  items-start">
       {StakingItem?.map((item, index) => (
         <motion.div
           key={index}
-          className="w-max  overflow-hidden relative top-0 bg-gradient-to-b from-[#1F1F1F] to-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center "
-          animate={{
-            height: open === index ? 300 : 90,
-          }}
+          className={clsx(
+            open === index ? "lg:h-[300px] h-[550px]" : "lg:h-[90px] h-[300px]",
+            "w-full transition-all duration-300  relative top-0 bg-gradient-to-b from-[#1F1F1F] to-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center "
+          )}
         >
           <motion.div
-            className="absolute inset-0 glowcard z-0 rounded-3xl"
-            animate={{
-              height: open === index ? 400 : 90,
-            }}
+            className={clsx(`absolute inset-0 glowcard z-0 rounded-3xl`)}
           ></motion.div>
-          <div className="w-full flex gap-10 relative">
+          <div className="w-full lg:flex-row flex-col flex justify-between gap-10 relative">
             <div
-              className={`flex items-center gap-10 lg:mr-[160px] 2xl:mr-[300px] hover:cursor-pointer`}
+              className={`flex items-center justify-between gap-3 lg:gap-10 hover:cursor-pointer`}
               onClick={() => handleOpen(index)}
             >
               <div className="flex items-center">
@@ -62,16 +60,32 @@ export default function Card() {
                   {item.titleCrypto1} - {item.titleCrypto2}
                 </h1>
               </div>
+
+              {/* Button More Dekstop */}
+              <div className="flex lg:hidden justify-start items-center relative  ">
+                <button className="w-auto bg-neutral-700 flex justify-center items-center px-3 py-3 rounded-2xl">
+                  <HiEllipsisVertical size={30} />
+                </button>
+              </div>
+
             </div>
-            <div className={`flex gap-14 items-center`}>
-              <h1>{item.liqudity}</h1>
-              <h1>{item.apr}</h1>
-              <h1>{item.reward}</h1>
-              <h1 className="text-lg font-medium text-[#01a2e9]">
-                {item.earned}
-              </h1>
+            <div className={`flex  gap-14 items-center`}>
+              <div className="">
+                <h1>APR</h1>
+                <h1>{item.apr}</h1>
+              </div>
+              <div>
+                <h1>Reward</h1>
+                <h1>{item.reward}</h1>
+              </div>
+              <div>
+                <h1>Earned</h1>
+                <h1 className="text-lg font-medium text-[#01a2e9]">
+                  {item.earned}
+                </h1>
+              </div>
             </div>
-            <div className={`flex gap-1 items-center`}>
+            <div className={`hidden lg:flex gap-1 items-center `}>
               <div className="w-full flex items-center ">
                 <button className="w-full flex items-center gap-1 px-5 py-2 rounded-3xl bg-[#01a2e9]">
                   <RiDownloadLine size={15} />
@@ -79,11 +93,17 @@ export default function Card() {
                 </button>
               </div>
             </div>
-            <div className="flex justify-center items-center relative  ">
-              <div className="w-full bg-neutral-700 flex justify-center items-center px-5 py-2 rounded-2xl">
-                <h1>...</h1>
-              </div>
+
+            {/* Button More Mobile */}
+            <div className="lg:flex hidden justify-start items-center relative  ">
+              <button
+                
+                className="w-auto bg-neutral-700 flex justify-center items-center px-3 py-3 rounded-2xl"
+              >
+                <HiEllipsisVertical size={20} />
+              </button>
             </div>
+
           </div>
           <div
             className={clsx(
@@ -91,20 +111,9 @@ export default function Card() {
               `w-full flex flex-col gap-5 items-start relative`
             )}
           >
-            <div className="w-full grid  grid-cols-3 items-center">
-              <div className="w-full">
+            <div className="w-full gap-5 grid sm:grid-cols-2  md:grid-cols-3 items-center">
+              <div className="w-full flex flex-col">
                 <h1>Your Deposit</h1>
-              </div>
-              <div className="w-full">
-                <h1>Share</h1>
-              </div>
-
-              <div className="w-full">
-                <h1>Earning</h1>
-              </div>
-            </div>
-            <div className="w-full grid grid-cols-3 ">
-              <div className="w-full">
                 <h1 className="text-4xl font-semibold">
                   {item.deposit}{" "}
                   <span className="!text-xl !text-neutral-400">
@@ -112,15 +121,16 @@ export default function Card() {
                   </span>
                 </h1>
               </div>
-
-              <div className="w-full">
+              <div className="w-full flex flex-col">
+                <h1>Share</h1>
                 <h1 className="text-4xl font-semibold">
                   {item.share}
                   <span className="!text-xl !text-neutral-400">%</span>
                 </h1>
               </div>
 
-              <div className="w-full">
+              <div className="w-full flex flex-col">
+                <h1>Earning</h1>
                 <h1 className="text-4xl font-semibold text-[#01a2e9]">
                   {item.earning}{" "}
                   <span className="!text-xl !text-neutral-400">

@@ -30,14 +30,16 @@ body {
   );
   filter: blur(95px);
 }
+
 .glowcard {
-  border-radius: 32px;
+  /* border-radius: 32px; */
   background: linear-gradient(
     170deg,
+    rgba(9, 32, 236, 0.116),
     rgba(9, 100, 236, 0.2) 38.95%,
-    rgba(54, 9, 236, 0.527) 92.27%
+    rgba(54, 9, 236, 0.247) 92.27%
   );
-  filter: blur(95px);
+  /* filter: blur(95px); */
 }
 
 @layer utilities {

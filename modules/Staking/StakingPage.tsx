@@ -13,33 +13,12 @@ export default function StakingPage() {
           className="text-3xl font-semibold"
         />
       </div>
-      <div className="w-full overflow-hidden flex justify-center items-center lg:px-20">
+      <div className="w-full  overflow-hidden hidden lg:flex justify-center items-center lg:px-20">
         <div className="w-full max-lg:overflow-scroll flex justify-beetwen items-center">
           <div className="basis-[72%] max-lg:mr-[130px]">
             <h1>Token</h1>
           </div>
-          <div className="flex w-full gap-20 lg:gap-10">
-            <h1 className="flex items-center gap-1">
-              Liquidity
-              <span>
-                <RxQuestionMarkCircled
-                  size={15}
-                  className="bg-neutral-700 rounded-full"
-                />
-              </span>
-            </h1>
-            <h1 className="flex items-center gap-1">
-              APR
-              <span>
-                <RxQuestionMarkCircled
-                  size={15}
-                  className="bg-neutral-700 rounded-full"
-                />
-              </span>
-            </h1>
-            <h1>Reward</h1>
-            <h1>Earned</h1>
-          </div>
+          
         </div>
       </div>
       <div className="w-full xl:px-20 py-5 overflow-hidden">
