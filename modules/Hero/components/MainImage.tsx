@@ -3,6 +3,8 @@ import Image from "@/common/component/element/Image";
 import React from "react";
 import Money from "./Money";
 import { motion } from "framer-motion";
+import ComponentTransition from "@/common/component/element/ComponentTransition";
+import MainImageOption2 from "./MainImageOption2";
 
 export default function MainImage() {
   return (
@@ -21,6 +23,7 @@ export default function MainImage() {
           duration: 1.5,
         }}
       >
+        {/* <MainImageOption2 /> */}
         <Image
           className="w-full h-auto object-cover"
           src="/1.png"
@@ -30,7 +33,7 @@ export default function MainImage() {
           priority
         />
       </motion.div>
-      <div className="absolute z-[-9] w-full left-[-35%] lg:left-[-250px] top-[-30px] lg:top-[-90px]">
+      <div className="absolute z-[-9] w-full left-[-35%] lg:left-[-150px] top-[-30px] lg:top-[-150px]">
         <Money />
       </div>
       <div className="absolute w-[40%] left-[70%] top-[300px] lg:top-[250px]">
