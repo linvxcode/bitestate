@@ -1,5 +1,4 @@
 "use client";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -9,7 +8,11 @@ interface H1Props {
   textColor?: any;
 }
 
-export default function H1({ title= '', className= '',textColor= 'normal' }: H1Props) {
+export default function H1({
+  title = "",
+  className = "",
+  textColor = "normal",
+}: H1Props) {
   return (
     <div className={`${className} overflow-hidden w-auto px-2 relative flex  `}>
       <motion.h1
@@ -21,9 +24,7 @@ export default function H1({ title= '', className= '',textColor= 'normal' }: H1P
           duration: 1.5,
         }}
         viewport={{ once: true }}
-        className={clsx(
-          ColorShadow(textColor),
-          ` relative`)}
+        className={`${ColorShadow(textColor)} relative`}
       >
         {title}
       </motion.h1>
@@ -31,14 +32,14 @@ export default function H1({ title= '', className= '',textColor= 'normal' }: H1P
   );
 }
 
-
-const ColorShadow = (textColor:any) => {
-  const Color:any = {
-    colorShadow: "bg-clip-text text-transparent bg-gradient-to-br from-[#FFFFF7]  to-[#727267] ",
-    normal: 'text-[#7D7F78]',
-    white: 'text-[#FFFFF7]',
-    opacity: 'text-[#fffff7b7]',
-    blue: 'text-[#01a2e9]',
-  }
+const ColorShadow = (textColor: any) => {
+  const Color: any = {
+    colorShadow:
+      "bg-clip-text text-transparent bg-gradient-to-br from-[#FFFFF7]  to-[#727267] ",
+    normal: "text-[#7D7F78]",
+    white: "text-[#FFFFF7]",
+    opacity: "text-[#fffff7b7]",
+    blue: "text-[#01a2e9]",
+  };
   return Color[textColor] || Color.normal;
-}
+};

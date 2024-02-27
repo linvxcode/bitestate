@@ -1,8 +1,7 @@
-import { Inter,Sora } from "next/font/google";
+import { Sora } from "next/font/google";
 import Hero from "@/modules/Hero/Hero";
 import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
 const sora = Sora({ subsets: ["latin"] });
 
 export default function Home() {

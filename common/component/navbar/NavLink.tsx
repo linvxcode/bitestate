@@ -1,5 +1,4 @@
 'use client'
-import clsx from "clsx";
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
@@ -47,10 +46,10 @@ export const Links = ({ heading, href, pathname }: LinksProps) => {
       onMouseMove={handleMouseMove}
       initial="initial"
       whileHover="whileHover"
-      className={clsx(
-        pathname === href ? '!border-neutral-50' : '',
-        "group relative h-auto flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-5"
-      )}
+      className={
+        
+        `${pathname === href ? '!border-neutral-50' : ''} group relative h-auto flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-5`
+      }
     >
       <div>
         <motion.span
@@ -63,11 +62,11 @@ export const Links = ({ heading, href, pathname }: LinksProps) => {
             staggerChildren: 0.075,
             delayChildren: 0.25,
           }}
-          className={clsx(
-            pathname === href
+          className={`
+            ${pathname === href
               ? "relative z-10 block text-4xl font-bold transition-colors duration-500 text-neutral-50 md:text-6xl"
-              : "relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
-          )}
+              : "relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"}`
+          }
         >
           {heading.split(" ").map((l, i) => (
             <motion.span

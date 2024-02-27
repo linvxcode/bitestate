@@ -1,6 +1,4 @@
 "use client";
-import clsx from "clsx";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 
@@ -22,10 +20,10 @@ export default function H1Hover({ title, href, pathname, item }: H1HoverProps) {
           {title}
         </h1>
         <div
-          className={clsx(
-            pathname === item &&
-              "absolute top-[20px] left-[20%] h-[2px] flex justify-center items-center w-[50%]  bg-white  transition-all duration-300 "
-          )}
+          className={
+            
+              `${pathname === item &&  'absolute top-[20px] left-[20%] h-[2px] flex justify-center items-center w-[50%]  bg-white  transition-all duration-300'}  `
+          }
         ></div>
       </Link>
     </div>

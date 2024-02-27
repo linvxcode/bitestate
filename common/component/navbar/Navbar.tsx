@@ -1,5 +1,4 @@
 "use client";
-import clsx from "clsx";
 import Link from "next/link";
 import NavMobile from "./NavMobile";
 import { motion } from "framer-motion";
@@ -31,10 +30,9 @@ const Navbar = () => {
 
   return (
     <motion.div
-      className={clsx(
-        scroll ? "backdrop-blur-sm border-b-[1px] border-[#353434]" : "",
-        `w-full transition-all duration-300 mx-auto bg-[#0f0e0ed3]  max-w-[1500px]   py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
-      )}
+      className={
+        `${scroll ? "backdrop-blur-sm border-b-[1px] border-[#353434]" : ""} w-full transition-all duration-300 mx-auto bg-[#0f0e0ed3]  max-w-[1500px]   py-5 px-5 2xl:rounded-3xl  lg:px-10 fixed top-0 z-[99]`
+      }
     >
       <div className="flex flex-row justify-between items-center">
         <div className="flex w-full  items-start justify-start">

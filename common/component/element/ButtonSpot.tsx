@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import clsx from "clsx";
 
 interface ButtonSpotProps {
   title: string;
@@ -50,10 +49,7 @@ export const ButtonSpot: React.FC<ButtonSpotProps> = ({ title, className }) => {
     <motion.button
       whileTap={{ scale: 0.985 }}
       ref={btnRef}
-      className={clsx(
-        className,
-        `relative w-full group  max-w-xs overflow-hidden rounded-full  px-4 py-2 text-base font-medium  text-white`
-      )}
+      className={`${className} relative w-full group  max-w-xs overflow-hidden rounded-full  px-4 py-2 text-base font-medium  text-white`}
     >
       <span className="pointer-events-none relative z-10 mix-blend-difference">
         {title}

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import React from "react";
 import { IoWalletOutline } from "react-icons/io5";
 
@@ -21,10 +20,10 @@ const ButtonConect: React.FC<ButtonViewAllProps> = ({
 
   return (
     <button
-      className={clsx(
-        className,
-        `btn relative group gap-2 inline-flex items-center justify-center px-8 py-3 bg-neutral-900 text-white text-base  tracking-wide rounded-full`
-      )}
+      className={
+        
+        `${className} btn relative group gap-2 inline-flex items-center justify-center px-8 py-3 bg-neutral-900 text-white text-base  tracking-wide rounded-full`
+    }
       onMouseMove={handleMouseMove}
     >
       <IoWalletOutline size={20} className="group-hover:text-black transition-all duration-300" />

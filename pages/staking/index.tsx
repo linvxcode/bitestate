@@ -7,7 +7,6 @@ import Image from "@/common/component/element/Image";
 import { FaEthereum } from "react-icons/fa6";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { RiDownloadLine } from "react-icons/ri";
-import clsx from "clsx";
 import ButtonIcon from "@/common/component/element/ButtonIcon";
 import { GoPlus } from "react-icons/go";
 import { GrFormClose, GrFormSubtract } from "react-icons/gr";
@@ -59,13 +58,12 @@ export default function Staking() {
       {StakingItem?.map((item, index) => (
         <motion.div
           key={index}
-          className={clsx(
-            open === index ? "lg:h-[300px] h-[550px]" : "lg:h-[90px] h-[300px]",
-            "w-full transition-all duration-300  relative top-0 bg-gradient-to-b from-[#1F1F1F] to-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center "
-          )}
+          className={
+            `${open === index ? "lg:h-[300px] h-[550px]" : "lg:h-[90px] h-[300px]"} w-full transition-all duration-300  relative top-0 bg-gradient-to-b from-[#1F1F1F] to-neutral-800 px-5 py-5 rounded-3xl flex-col flex justify-between items-center `
+          }
         >
           <motion.div
-            className={clsx(`absolute inset-0 glowcard z-0 rounded-3xl`)}
+            className={(`absolute inset-0 glowcard z-0 rounded-3xl`)}
           ></motion.div>
           <div className="w-full lg:flex-row flex-col flex justify-between gap-10 relative">
             <div
@@ -133,10 +131,9 @@ export default function Staking() {
 
           </div>
           <div
-            className={clsx(
-              open === index ? "block" : "hidden",
-              `w-full flex flex-col gap-5 items-start relative`
-            )}
+            className={
+              `${open === index ? "block" : "hidden"} w-full flex flex-col gap-5 items-start relative`
+            }
           >
             <div className="w-full gap-5 grid sm:grid-cols-2  md:grid-cols-3 items-center">
               <div className="w-full flex flex-col">
@@ -168,10 +165,9 @@ export default function Staking() {
             </div>
           </div>
           <div
-            className={clsx(
-              open === index ? "block" : "hidden",
-              `w-full relative`
-            )}
+            className={
+              `${open === index ? "block" : "hidden"} w-full relative`
+            }
           >
             <div className="w-full flex gap-5">
               <ButtonIcon
@@ -216,19 +212,17 @@ export default function Staking() {
               <div className="w-auto px-1 py-1 bg-[#3f3f3f88] rounded-2xl flex gap-2 overflow-hidden">
                 <button
                   onClick={() => setChoice(!choice)}
-                  className={clsx(
-                    choice === false && "bg-[#01a2e9]",
-                    `text-white px-3 py-2 rounded-[12px] transition-all duration-300`
-                  )}
+                  className={     
+                    `${choice === false && "bg-[#01a2e9]"} text-white px-3 py-2 rounded-[12px] transition-all duration-300`
+                  }
                 >
                   <h1>Stake</h1>
                 </button>
                 <button
                   onClick={() => setChoice(!choice)}
-                  className={clsx(
-                    choice === true && "bg-[#01a2e9]",
-                    `text-white px-3 py-2 rounded-[12px] transition-all duration-300`
-                  )}
+                  className={    
+                    `${ choice === true && "bg-[#01a2e9]"} text-white px-3 py-2 rounded-[12px] transition-all duration-300`
+                  }
                 >
                   <h1>Withdraw</h1>
                 </button>
